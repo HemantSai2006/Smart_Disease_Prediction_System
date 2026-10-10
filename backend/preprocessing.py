@@ -1,9 +1,4 @@
-"""
-AI-Based Disease Prediction System - Data Preprocessing Module
 
-Inspects, audits, and prepares the dataset (`backend/data/ml.csv` / `ML.csv`)
-using group-aware train/test splitting to guarantee zero symptom pattern leakage.
-"""
 
 import os
 import pandas as pd
@@ -13,7 +8,7 @@ from sklearn.model_selection import GroupShuffleSplit
 
 
 def locate_dataset_file(data_dir: str) -> str:
-    """Finds ml.csv or ML.csv in the data directory."""
+    
     candidates = ["ml.csv", "ML.csv"]
     for c in candidates:
         path = os.path.join(data_dir, c)
@@ -23,9 +18,7 @@ def locate_dataset_file(data_dir: str) -> str:
 
 
 def inspect_dataset(df: pd.DataFrame) -> dict:
-    """
-    Performs comprehensive data exploration and returns a diagnostic summary.
-    """
+    
     shape = df.shape
     missing_count = int(df.isnull().sum().sum())
     duplicate_full_rows = int(df.duplicated().sum())

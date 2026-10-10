@@ -1,10 +1,4 @@
-"""
-AI-Based Disease Prediction System - FastAPI Application
 
-Provides REST API endpoints for disease prediction, dynamic symptom retrieval,
-model benchmarking results, and SQLite prediction history with versioning,
-uncertainty estimation, and clinical safety guidance.
-"""
 
 import os
 import json
@@ -164,12 +158,7 @@ def get_symptoms():
 
 @app.post("/api/predict", response_model=PredictionResponse, tags=["Prediction"])
 def predict_disease(request: PredictionRequest):
-    """
-    Predict possible disease based on user-selected symptoms.
-    Validates symptoms, constructs exact binary feature vector, invokes best ML model,
-    evaluates probability confidence, flags uncertainty or urgent symptoms, saves record
-    to SQLite with version tag, and returns top predictions with medical disclaimers.
-    """
+   
     if not best_model or not label_encoder or not feature_columns:
         reload_ml_artifacts()
 
